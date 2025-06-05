@@ -1,0 +1,56 @@
+#include <stdio.h>
+
+void deposit(long long *check) {
+    long long amount;
+    printf("Amount you want to deposit: ");
+    scanf("%lld", &amount);
+    *check = *check + amount;  
+}
+
+void withdraw(long long *check){
+    long long Wamount;
+    printf("Amount you want to withdraw: ");
+    scanf("%lld", &Wamount);
+    if (*check >= Wamount) {  
+        *check = *check - Wamount;  
+    } else {
+        printf("Insufficient funds!\n");
+    }
+}
+
+void checkBal(long long check){
+    printf("Your new balance is: %lld\n", check);
+}
+
+int main() {
+    int choice;
+    long long check = 1000; 
+
+   while(1){
+        printf("[1]Deposit\n");
+        printf("[2]Withdraw\n");
+        printf("[3]Checkbalance\n");
+        printf("[4]Exit\n");
+        scanf("%d", &choice);
+        
+        switch(choice){
+            case 1:
+                deposit(&check);
+                break;
+            case 2:
+                withdraw(&check);
+                break;
+            case 3:
+                checkBal(check);
+                break;
+            case 4:
+                printf("Exiting.....");
+                return 0;
+        }
+   }
+    
+    
+
+
+    return 0;
+}
